@@ -49,7 +49,7 @@ def run_simulation(simulation_time, arrival_rate):
     env.run(until=simulation_time)
 
 if __name__ == '__main__':
-    SIMULATION_TIME = 1200 # Run the simulation for 200 minutes
+    SIMULATION_TIME = 1200 # Run the simulation for 1200 minutes
     ARRIVAL_RATE = 1 / 300  # Average of 5 hours =300 minutes, lamda= 1/mean(avg)
 
     run_simulation(SIMULATION_TIME, ARRIVAL_RATE)
