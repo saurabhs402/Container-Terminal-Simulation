@@ -33,34 +33,34 @@ python main.py
 ```
 ## Code Overview
 
-- vessel_generator: Generates vessels arriving at the terminal based on an exponential distribution.
-- activity_berth: Represents a vessel arriving at the terminal, berthing, and unloading containers.
-- activity_crane_truck: Handles the process of unloading containers using quay cranes and transporting them using trucks.
+- **vessel_generator**: Generates vessels arriving at the terminal based on an exponential distribution.
+- **activity_berth**: Represents a vessel arriving at the terminal, berthing, and unloading containers.
+- **activity_crane_truck**: Handles the process of unloading containers using quay cranes and transporting them using trucks.
 
-- run_simulation: Sets up the simulation environment, initializes resources, and runs the simulation.
+- **run_simulation**: Sets up the simulation environment, initializes resources, and runs the simulation.
 
 
 
 ## Simulation Logic
-1. Vessel Generator:
+**1. Vessel Generator:**
 
    - Generates vessels at intervals based on an exponential distribution.
    - Initiates the activity_berth process for each arriving vessel.
 
-2. activity_berth Process:
+**2. activity_berth Process:**
 
    - Requests a berth and starts unloading containers once berthed.
    - Initiates the activity_crane_truck process to unloads containers using a quay crane, 
      then loads containers onto a truck for transportation.
    - Releases the berth once unloading is complete.
 
-3. activity_crane_truck Process:
+**3. activity_crane_truck Process:**
 
    - Requests a quay crane and unloads a container.
    - Requests a truck and transports the container to the yard block.
    - Releases the crane and truck resources after use.
 
-4. Run Simulation:
+**4. Run Simulation:**
 
    - Sets up the simulation environment and resources.
    - Starts the vessel generator process.
