@@ -3,17 +3,18 @@ import random
 
 
 def vessel_generator(env, berth, crane, truck, arrival_rate):
-    vessel_count = 0
+    vessel_count = 1
     while True:
+        env.process(activity_berth(env, f'Vessel {vessel_count}', berth, crane, truck))
         yield env.timeout(random.expovariate(arrival_rate))
         vessel_count += 1
-        env.process(activity_berth(env, f'Vessel {vessel_count}', berth, crane, truck))
+        
 
 def activity_berth(env, name, berth, crane, truck):
     print(f'{name} arrives at the terminal : {env.now}')
     berth_request = berth.request()
     yield berth_request
-    print(f'{env.now}: {name} is berthing')
+    print(f'{name} is berthing: {env.now}')
     yield env.process(activity_crane_truck(env, name, crane, truck))
     berth.release(berth_request)
 
@@ -35,7 +36,7 @@ def activity_crane_truck(env, name, crane, truck):
         
         containers -= 1
 
-    print(f'{env.now}: {name} has finished unloading and leaves the terminal')
+    print(f'{name} has finished unloading and leaves the terminal: {env.now}')
 
 
 
